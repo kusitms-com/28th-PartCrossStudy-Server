@@ -8,6 +8,8 @@ import org.hibernate.annotations.Comment;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.EnumSet;
 import java.util.List;
 
 @Component
@@ -30,10 +32,13 @@ public class ArticleMapper {
 
     public Article toEntity(ArticleReq articleReq) {
 
-        List<Tag> tags = new ArrayList<>();
+        // List<String> to List<Tag>
+        List<Tag> tagList = new ArrayList<>();
         for (String s : articleReq.getTagList()) {
-            tags.add(Tag.valueOf(s));
+            tagList.add(Tag.valueOf(s));
         }
+        // List<Tag> to EnumSet<Tag>
+        EnumSet<Tag> tags = EnumSet.copyOf(tagList);
 
         return Article.builder()
                 .title(articleReq.getTitle())

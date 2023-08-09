@@ -1,5 +1,6 @@
 package kusitms.server.domain.article.service;
 
+import jakarta.transaction.Transactional;
 import kusitms.server.domain.article.dto.ArticleReq;
 import kusitms.server.domain.article.dto.ArticleRes;
 import kusitms.server.domain.article.entity.Article;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Service
+@Transactional
 public class ArticleService {
 
     private final ArticleRepository articleRepository;
@@ -21,10 +23,7 @@ public class ArticleService {
     public ArticleRes createArticle(ArticleReq articleReq) {
 
         Article article = articleMapper.toEntity(articleReq);
-
-        articleRepository.save(article);
-
-        return articleMapper.toRes(article);
+        return articleMapper.toRes(articleRepository.save(article));
     }
 
     public List<ArticleRes> getArticles() {
@@ -42,12 +41,11 @@ public class ArticleService {
     }
 
     public ArticleRes updateArticle(Long articleId, ArticleReq articleReq) {
-
         Article article = articleRepository.findById(articleId).orElseThrow();
-
-        articleRepository.save(article);
-
-        return articleMapper.toRes(article);
+        System.out.println("!!"+article.toString());
+        System.out.println("!!"+articleReq.toString());
+        article.setArticle(articleMapper.toEntity(articleReq));
+        return articleMapper.toRes(articleRepository.save(article));
     }
 
     public void deleteArticle(Long articleId) {

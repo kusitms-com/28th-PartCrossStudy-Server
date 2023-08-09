@@ -31,23 +31,24 @@ public class ArticleController {
     }
     @Operation(summary = "Article 작성", description = "Article을 작성합니다.")
     @PostMapping()
-    public ResponseEntity<ArticleRes> createArticle(ArticleReq articleReq) {
+    public ResponseEntity<ArticleRes> createArticle(@RequestBody ArticleReq articleReq) {
         System.out.println(articleReq.toString());
         return new ResponseEntity<>(articleService.createArticle(articleReq), HttpStatus.OK);
     }
     @Operation(summary = "Article 조회", description = "Article을 조회합니다.")
     @GetMapping("/{articleId}")
-    public ResponseEntity<ArticleRes> getArticle(@PathVariable(name = "articleId") Long articleId) {
+    public ResponseEntity<ArticleRes> getArticle(@PathVariable Long articleId) {
         return new ResponseEntity<>(articleService.getArticle(articleId), HttpStatus.OK);
     }
     @Operation(summary = "Article 수정", description = "Article을 수정합니다.")
     @PutMapping("/{articleId}")
-    public ResponseEntity<ArticleRes> updateArticle(@PathVariable(name = "articleId") Long articleId, @Parameter(description = "Article 수정 객체") ArticleReq articleReq) {
+    public ResponseEntity<ArticleRes> updateArticle(@PathVariable Long articleId, @RequestBody ArticleReq articleReq) {
+        System.out.println(articleReq.toString());
         return new ResponseEntity<>(articleService.updateArticle(articleId,articleReq), HttpStatus.OK);
     }
     @Operation(summary = "Article 삭제", description = "Article을 삭제합니다.")
     @DeleteMapping("/{articleId}")
-    public ResponseEntity<?> deleteArticle(@PathVariable(name = "articleId") Long articleId) {
+    public ResponseEntity<?> deleteArticle(@PathVariable Long articleId) {
         articleService.deleteArticle(articleId);
         return new ResponseEntity<>(HttpStatus.OK);
     }

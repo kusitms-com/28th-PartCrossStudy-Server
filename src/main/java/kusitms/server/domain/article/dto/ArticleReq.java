@@ -1,10 +1,7 @@
 package kusitms.server.domain.article.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +10,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Schema(description = "Article 작성,수정 객체")
 public class ArticleReq {
     @Schema(description = "Article 제목", nullable = false)
