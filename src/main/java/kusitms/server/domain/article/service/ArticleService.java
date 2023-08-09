@@ -42,8 +42,6 @@ public class ArticleService {
 
     public ArticleRes updateArticle(Long articleId, ArticleReq articleReq) {
         Article article = articleRepository.findById(articleId).orElseThrow();
-        System.out.println("!!"+article.toString());
-        System.out.println("!!"+articleReq.toString());
         article.setArticle(articleMapper.toEntity(articleReq));
         return articleMapper.toRes(articleRepository.save(article));
     }

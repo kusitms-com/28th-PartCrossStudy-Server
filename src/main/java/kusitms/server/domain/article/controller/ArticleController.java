@@ -32,7 +32,6 @@ public class ArticleController {
     @Operation(summary = "Article 작성", description = "Article을 작성합니다.")
     @PostMapping()
     public ResponseEntity<ArticleRes> createArticle(@RequestBody ArticleReq articleReq) {
-        System.out.println(articleReq.toString());
         return new ResponseEntity<>(articleService.createArticle(articleReq), HttpStatus.OK);
     }
     @Operation(summary = "Article 조회", description = "Article을 조회합니다.")
@@ -43,7 +42,6 @@ public class ArticleController {
     @Operation(summary = "Article 수정", description = "Article을 수정합니다.")
     @PutMapping("/{articleId}")
     public ResponseEntity<ArticleRes> updateArticle(@PathVariable Long articleId, @RequestBody ArticleReq articleReq) {
-        System.out.println(articleReq.toString());
         return new ResponseEntity<>(articleService.updateArticle(articleId,articleReq), HttpStatus.OK);
     }
     @Operation(summary = "Article 삭제", description = "Article을 삭제합니다.")

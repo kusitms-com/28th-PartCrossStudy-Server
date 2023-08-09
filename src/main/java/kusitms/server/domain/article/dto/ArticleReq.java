@@ -10,7 +10,6 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Schema(description = "Article 작성,수정 객체")
 public class ArticleReq {
     @Schema(description = "Article 제목", nullable = false)
