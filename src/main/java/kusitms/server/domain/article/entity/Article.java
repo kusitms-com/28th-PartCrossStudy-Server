@@ -23,15 +23,18 @@ public class Article extends BaseEntity {
     private String description;
     private String body;
 
-    private List<Tag> tagList = new ArrayList<>();
+    private List<Tag> tags = new ArrayList<>();
 
+    public Article() {
+
+    }
     @Builder
-    public Article(String title, String description, String body, List<String> tagList) {
+    public Article(String title, String description, String body, List<Tag> tagList) {
         this.title = title;
         this.description = description;
         this.body = body;
-        for (String s : tagList) {
-            this.tagList.add(Tag.valueOf(s));
-        }
+        this.tags = tagList;
     }
+
+
 }
