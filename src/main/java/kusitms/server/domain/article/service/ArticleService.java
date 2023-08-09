@@ -3,7 +3,7 @@ package kusitms.server.domain.article.service;
 import kusitms.server.domain.article.dto.ArticleReq;
 import kusitms.server.domain.article.dto.ArticleRes;
 import kusitms.server.domain.article.entity.Article;
-import kusitms.server.domain.article.entity.ArticleMapper;
+import kusitms.server.domain.article.mapper.ArticleMapper;
 import kusitms.server.domain.article.repository.ArticleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,9 @@
-package kusitms.server.domain.article.entity;
+package kusitms.server.domain.article.mapper;
 
 import kusitms.server.domain.article.dto.ArticleReq;
 import kusitms.server.domain.article.dto.ArticleRes;
+import kusitms.server.domain.article.entity.Article;
+import kusitms.server.domain.article.entity.Tag;
 import org.hibernate.annotations.Comment;
 import org.springframework.stereotype.Component;
 
