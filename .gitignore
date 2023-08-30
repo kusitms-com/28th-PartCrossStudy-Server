@@ -40,3 +40,6 @@ out/
 application.yml
 .DS_Store
 .idea/
+
+### Security Files ###
+src/main/resources/application-prod.yml
