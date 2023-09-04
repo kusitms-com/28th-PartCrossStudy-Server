@@ -1,6 +1,7 @@
 package kusitms.server.domain.article.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import kusitms.server.domain.article.entity.Tag;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -18,8 +19,8 @@ public class ArticleReq {
     private String description;
     @Schema(description = "Article 내용", nullable = false)
     private String body;
-        @Schema(description = "Article Tag 목록", nullable = false)
-    private List<String> tagList = new ArrayList<>();
+    @Schema(description = "Article Tag 목록", nullable = false)
+    private List<Tag> tagList = new ArrayList<>();
 
 
 }

@@ -5,6 +5,7 @@ import kusitms.server.domain.article.dto.ArticleRes;
 import kusitms.server.domain.article.entity.Article;
 import kusitms.server.domain.article.entity.Tag;
 import org.hibernate.annotations.Comment;
+import org.springframework.boot.json.JsonParseException;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -15,10 +16,9 @@ import java.util.List;
 @Component
 public class ArticleMapper {
     public ArticleRes toRes(Article article) {
-        List<String> tags = new ArrayList<>();
-        for (Tag s : article.getTags()) {
-            tags.add(s.getName());
-        }
+        List<Tag> tags = new ArrayList<>();
+        tags.addAll(article.getTags());
+
         return  ArticleRes.builder()
                 .articleId(article.getId())
                 .title(article.getTitle())
@@ -33,18 +33,18 @@ public class ArticleMapper {
     public Article toEntity(ArticleReq articleReq) {
 
         // List<String> to List<Tag>
-        List<Tag> tagList = new ArrayList<>();
-        for (String s : articleReq.getTagList()) {
-            tagList.add(Tag.valueOf(s));
-        }
-        // List<Tag> to EnumSet<Tag>
-        EnumSet<Tag> tags = EnumSet.copyOf(tagList);
+            List<Tag> tagList = new ArrayList<>();
+            tagList.addAll(articleReq.getTagList());
 
-        return Article.builder()
-                .title(articleReq.getTitle())
-                .description(articleReq.getDescription())
-                .body(articleReq.getBody())
-                .tagList(tags)
-                .build();
+            // List<Tag> to EnumSet<Tag>
+            EnumSet<Tag> tags = EnumSet.copyOf(tagList);
+
+            return Article.builder()
+                    .title(articleReq.getTitle())
+                    .description(articleReq.getDescription())
+                    .body(articleReq.getBody())
+                    .tagList(tags)
+                    .build();
+
     }
 }

@@ -3,6 +3,7 @@ package kusitms.server.domain.article.entity;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
+import org.springframework.context.annotation.Description;
 
 @RequiredArgsConstructor
 @Getter
