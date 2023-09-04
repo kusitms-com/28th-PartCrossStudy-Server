@@ -32,7 +32,7 @@ public class ArticleMapper {
 
     public Article toEntity(ArticleReq articleReq) {
 
-        // List<String> to List<Tag>
+            // List<String> to List<Tag>
             List<Tag> tagList = new ArrayList<>();
             tagList.addAll(articleReq.getTagList());
 
