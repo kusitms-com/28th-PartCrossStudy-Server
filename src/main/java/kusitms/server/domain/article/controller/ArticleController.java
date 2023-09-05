@@ -20,7 +20,7 @@ import static kusitms.server.domain.article.constant.ArticleResponseMessage.*;
 
 @Tag(name = "Article API", description = "Article CRUD API")
 
-@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "*")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("api/v1/articles")
