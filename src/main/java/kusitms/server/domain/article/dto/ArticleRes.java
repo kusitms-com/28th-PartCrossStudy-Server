@@ -20,15 +20,15 @@ public class ArticleRes {
     private String description;
     @Schema(description = "Article 내용", nullable = false)
     private String body;
-    @Schema(description = "Article Tag 목록", nullable = false)
-    private List<Tag> tagList = new ArrayList<>();
+    @Schema(description = "Article Tag 목록 (STUDY,HEALTH,DRINK,OTHER)", nullable = false)
+    private List<String> tagList = new ArrayList<>();
     @Schema(description = "Article 작성 시각", nullable = false)
     private String createdAt;
     @Schema(description = "Article 수정 시각", nullable = false)
     private String updatedAt;
 
     @Builder
-    public ArticleRes(Long articleId, String title, String description, String body, List<Tag> tagList, String createdAt, String updatedAt) {
+    public ArticleRes(Long articleId, String title, String description, String body, List<String> tagList, String createdAt, String updatedAt) {
         this.articleId = articleId;
         this.title = title;
         this.description = description;

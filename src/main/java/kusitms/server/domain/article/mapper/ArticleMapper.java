@@ -16,8 +16,8 @@ import java.util.List;
 @Component
 public class ArticleMapper {
     public ArticleRes toRes(Article article) {
-        List<Tag> tags = new ArrayList<>();
-        tags.addAll(article.getTags());
+        List<String> tags = new ArrayList<>();
+        article.getTags().forEach(tag -> tags.add(tag.getName()));
 
         return  ArticleRes.builder()
                 .articleId(article.getId())
@@ -32,14 +32,15 @@ public class ArticleMapper {
 
     public Article toEntity(ArticleReq articleReq) {
 
-            // List<String> to List<Tag>
-            List<Tag> tagList = new ArrayList<>();
-            tagList.addAll(articleReq.getTagList());
+        // List<String> to List<Tag>
+        List<Tag> tagList = new ArrayList<>();
 
-            // List<Tag> to EnumSet<Tag>
-            EnumSet<Tag> tags = EnumSet.copyOf(tagList);
+        articleReq.getTagList().forEach(tag -> tagList.add(Tag.valueOf(tag)));
 
-            return Article.builder()
+        // List<Tag> to EnumSet<Tag>
+        EnumSet<Tag> tags = EnumSet.copyOf(tagList);
+
+        return Article.builder()
                     .title(articleReq.getTitle())
                     .description(articleReq.getDescription())
                     .body(articleReq.getBody())
